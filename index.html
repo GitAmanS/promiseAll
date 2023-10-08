@@ -47,7 +47,6 @@
         Promise.all([createPost("Post 1"), updateLastUserActivityTime()])
         .then(([createP, activityTime]) => {
             console.log("Last Activity Time:", activityTime);
-            return deletePost();
         })
         .then(deletedPost)
         .catch((error) => {
