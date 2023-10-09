@@ -44,13 +44,16 @@
         });
         }
 
-        Promise.all([createPost("Post 1"), updateLastUserActivityTime()])
-        .then(([createP, activityTime]) => {
-            console.log("Last Activity Time:", activityTime);
-        })
-        .then(deletedPost)
-        .catch((error) => {
-            console.error("Error:", error);
+        const postAll = async () =>{
+            await Promise.all([createPost("Post 1"),createPost("Post 2"), deletePost])
+            let activityTime = await updateLastUserActivityTime;
+
+            return activityTime();
+
+        }
+
+        postAll().then((m)=> {
+            console.log(m);
         });
 
     </script>
